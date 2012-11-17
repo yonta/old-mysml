@@ -1,4 +1,4 @@
-structure Monad :
+structure MaybeMonad :
           sig
             datatype 'a maybe = Some of 'a | None
             val >>= : 'a maybe -> ('a -> 'b maybe) -> 'b maybe
@@ -14,5 +14,5 @@ struct
   fun return a = Some a
 end
 
-open Monad
+open MaybeMonad
 infix >>=

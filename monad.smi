@@ -1,6 +1,6 @@
 (* _require "basis.smi" *)
 
-structure Monad =
+structure MaybeMonad =
   struct
     datatype 'a maybe = Some of 'a | None
     val >>= : 'a maybe -> ('a -> 'b maybe) -> 'b maybe
