@@ -2,7 +2,7 @@
 
 structure Monad =
   struct
-    type 'a maybe (= boxed)
+    datatype 'a maybe = Some of 'a | None
     val >>= : 'a maybe -> ('a -> 'b maybe) -> 'b maybe
     val return : 'a -> 'a maybe
   end

@@ -1,6 +1,6 @@
-structure Monad :>
+structure Monad :
           sig
-            type 'a maybe
+            datatype 'a maybe = Some of 'a | None
             val >>= : 'a maybe -> ('a -> 'b maybe) -> 'b maybe
             val return : 'a -> 'a maybe
           end
@@ -10,7 +10,9 @@ struct
 
   fun >>= (Some a) f = f a
     | >>= None _ = None
-  infix >>=
 
   fun return a = Some a
 end
+
+open Monad
+infix >>=
