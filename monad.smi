@@ -1,0 +1,8 @@
+(* _require "basis.smi" *)
+
+structure Monad =
+  struct
+    type 'a maybe (= boxed)
+    val >>= : 'a maybe -> ('a -> 'b maybe) -> 'b maybe
+    val return : 'a -> 'a maybe
+  end
