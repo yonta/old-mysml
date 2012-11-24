@@ -6,3 +6,13 @@ structure MaybeMonad =
     val >>= : 'a maybe -> ('a -> 'b maybe) -> 'b maybe
     val return : 'a -> 'a maybe
   end
+
+structure StateMonad =
+  struct
+    datatype ('t, 'tstate) state = STATE of 'tstate -> 't * 'tstate
+    val get : ('a, 'a) state
+    val putState : ('a, 'b) state -> 'b -> ('a, 'b) state
+    val putValue : ('a, 'b) state -> 'c -> ('c, 'b) state
+    val calcState : ('a, 'b) state -> ('b -> 'b) -> ('a, 'b) state
+    val calcValue : ('a, 'b) state -> ('a -> 'c) -> ('c, 'b) state
+  end
